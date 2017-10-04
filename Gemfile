@@ -39,7 +39,6 @@ gem 'rolify', '~> 5.1'
 gem 'phonelib', '~> 0.6.15'
 
 #UI and Design
-gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'simple_form', '~> 3.5'
 
@@ -55,6 +54,9 @@ gem 'searchkick', '~> 2.3', '>= 2.3.2'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.3', '>= 3.3.5'
+
+#Api documentation
+gem 'apipie-rails', '~> 0.5.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

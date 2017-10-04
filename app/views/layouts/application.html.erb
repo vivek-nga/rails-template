@@ -12,9 +12,10 @@
   </head>
 
   <body>
-  	<div class="container">
+    <%= render 'shared/top_bar' if user_signed_in? %>
+  	<div class="container-fluid">
   		<%= yield %>
-	</div>
- 
+	  </div>
+    <%= javascript_include_tag 'dashboard', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
