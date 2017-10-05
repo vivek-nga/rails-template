@@ -6,15 +6,20 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
     <%= render 'shared/top_bar' if user_signed_in? %>
   	<div class="container-fluid">
-  		<%= yield %>
+      <div class="row">
+        <%= render 'shared/side_bar' if user_signed_in? %>
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          <%= render_breadcrumbs builder: ::Bootstrap4BreadcrumbsBuilder %>
+          <%= yield %>
+        </main>
+      </div>
 	  </div>
     <%= javascript_include_tag 'dashboard', 'data-turbolinks-track': 'reload' %>
   </body>

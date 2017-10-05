@@ -14,7 +14,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'form-control-label'
 
-    b.use :input, class: 'form-control'
+    b.use :input, class: 'form-control', error_class: 'form-control-danger'
     b.use :error, wrap_with: { tag: 'span', class: 'form-text text-muted' }
     b.use :hint,  wrap_with: { tag: 'p', class: 'form-text text-muted' }
   end
@@ -64,8 +64,8 @@ SimpleForm.setup do |config|
     b.use :label, class: 'col-md-3 form-control-label'
 
     b.wrapper tag: 'div', class: 'col-md-6' do |ba|
-      ba.use :input, class: 'form-control', error_class: 'is-invalid'
-      ba.use :error, wrap_with: { tag: 'span', class: 'form-text invalid-feedback' }
+      ba.use :input, class: 'form-control', error_class: 'form-control-danger'
+      ba.use :error, wrap_with: { tag: 'span', class: 'form-text text-muted' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'form-text text-muted' }
     end
   end
