@@ -1,0 +1,14 @@
+<div class="alert-container">
+<% [:notice, :error, :alert].each do |level| %>
+	<% unless flash[level].blank? %>
+		<div class="<%= flash_class(level) %> alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<%= content_tag :P, :style => "margin: 0;" do %>
+			<%= flash[level].html_safe %> 
+			<% end %>
+			<% flash[level] = nil %>
+		</div>     
+	<% end %>
+<% end %>
+</div>
+

@@ -1,2 +1,5 @@
-<%= render 'articles/list' %>
+<div class="articles-list">
+	<%= render 'articles/list', articles: @articles %>
+</div>
+
 <%= link_to "Add New Article", new_article_path %>

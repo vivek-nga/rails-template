@@ -70,6 +70,28 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :input_group, tag: 'div', class: 'form-group row' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.wrapper tag: 'div', class: 'col-md-12' do |ba|
+      ba.wrapper tag: 'div', class: 'input-group' do |baa|
+        baa.use :input, class: 'form-control'
+        baa.wrapper tag: 'span', class: 'input-group-btn' do |bas|
+          bas.wrapper tag: 'button', class: 'btn btn-primary', type: 'button' do |bat|
+            bat.wrapper tag: 'i', class: 'fa fa-search' do |bai|
+            end
+          end
+        end
+        
+      end
+    end
+  end
+
   config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group row', error_class: 'has-danger' do |b|
     b.use :html5
     b.use :placeholder

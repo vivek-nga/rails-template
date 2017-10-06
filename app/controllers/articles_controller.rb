@@ -1,11 +1,22 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  include InitiateSearch
   # GET /articles
   # GET /articles.json
   def index
     add_breadcrumb "Articles", :articles_path
-    @articles = Article.all
+    p search_params
+    if params[:search].present?
+      @articles = Article.where(title: params[:search][:query])
+    else
+      @articles = Article.all
+    end
+    
+    respond_to do |format|
+      format.js { render :search}
+      format.html{ render :index}
+    end
+
   end
 
   # GET /articles/1

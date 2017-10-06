@@ -16,6 +16,7 @@
       <div class="row">
         <%= render 'shared/side_bar' if user_signed_in? %>
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          <%= render 'shared/messages' %>
           <%= render_breadcrumbs builder: ::Bootstrap4BreadcrumbsBuilder %>
           <%= yield %>
         </main>
