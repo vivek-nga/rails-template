@@ -50,7 +50,7 @@ gem 'flutie', '~> 2.0'  # Page title helper
 
 # Scheduled and background jobs
 gem 'sucker_punch', '~> 2.0', '>= 2.0.4'
-
+gem 'sidekiq', '~> 5.0', '>= 5.0.5'
 
 # Searching and indexing
 gem 'searchkick', '~> 2.3', '>= 2.3.2'
@@ -73,10 +73,12 @@ group :development, :test do
   gem 'rubocop', '~> 0.50.0', require: false
   gem 'brakeman', :require => false
   gem 'rails_best_practices', '~> 1.19'
-
+  gem 'factory_girl', '~> 4.8', '>= 4.8.1'
+  gem 'factory_girl_rails', '~> 4.8'
 
   # Env variables
   gem 'figaro', '~> 1.1', '>= 1.1.1'
+  gem 'faker', '~> 1.8', '>= 1.8.4'
 
 end
 

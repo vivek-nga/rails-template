@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     add_breadcrumb "Articles", :articles_path
-    p search_params
     if params[:search].present?
       @articles = Article.where(title: params[:search][:query])
     else
@@ -17,6 +16,11 @@ class ArticlesController < ApplicationController
       format.html{ render :index}
     end
 
+  end
+
+  def generate
+    EventHandleWorker.perform_in(5.minutes, 'bob', 5)
+    redirect_to articles_path
   end
 
   # GET /articles/1

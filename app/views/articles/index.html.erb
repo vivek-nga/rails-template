@@ -1,5 +1,10 @@
 <div class="articles-list">
 	<%= render 'articles/list', articles: @articles %>
 </div>
+<div class="row justify-row-content">
+	<div class="col-md-2">
+		<%= link_to "Add", new_article_path %></div>
+	<div class="col-md-2">
+		<%= link_to "Generate Articles", generate_articles_path %></div>
+</div>
 
-<%= link_to "Add New Article", new_article_path %>

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index'
+    get 'dashboard/index'
 
-	resources :articles
+	resources :articles do
+		collection do
+			get :generate
+		end
+	end
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	devise_for :users, 
 				controllers: { sessions: 'users/sessions',
@@ -18,5 +22,7 @@ Rails.application.routes.draw do
 	authenticated :user do
     	root 'dashboard#index', as: :authenticated_root
   	end
+  	require 'sidekiq/web'
+  	mount Sidekiq::Web => '/sidekiq'
 	root 'welcome#index'
 end
