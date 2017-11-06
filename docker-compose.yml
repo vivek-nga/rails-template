@@ -1,17 +1,23 @@
-version: '3'
+version: '2'
 services:
+  db:
+    image: postgres:9.6
   app:
     build: .
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - /var/www/html
+      - .:/var/www/html
     expose:
       - "3000"
+    depends_on:
+      - db
   web:
     build:
       context: .
       dockerfile: Dockerfile-nginx
     links:
       - app
+    environment:
+      - NGINX_HOST=172.31.94.120
     ports:
       - "80:80"
