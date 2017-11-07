@@ -17,7 +17,9 @@ services:
       dockerfile: Dockerfile-nginx
     links:
       - app
+    depends_on:
+      - app
     environment:
-      - NGINX_HOST=172.31.94.120
+      - NGINX_HOST=174.129.190.189
     ports:
       - "80:80"
