@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'event/index'
+
     get 'dashboard/index'
 
 	resources :articles do
