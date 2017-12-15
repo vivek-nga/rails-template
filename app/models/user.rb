@@ -17,7 +17,6 @@ class User < ApplicationRecord
     self.add_role(:user) if self.roles.blank?
   end
 
-
   def name
     "#{self.first_name} #{self.last_name}".try(:strip)
   end

@@ -11,11 +11,11 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <% articles.each_with_index do |article, index| %>
+	    <% articles.try(:each_with_index) do |article, index| %>
 		  <tr>
 		  	<td><%= index+1 %></td>
 		    <td><%= article.title %></td>
-		    <td><%= article.body %></td>
+		    <td><%= truncate(article.body, length: 100) %></td>
 		    <td><%= article.user.name %></td>
 		    <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, article %>
 		    	<%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_article_path(article) %>
@@ -26,3 +26,4 @@
 	  </tbody>
 	</table>
 </div>
+<%= paginate articles %>

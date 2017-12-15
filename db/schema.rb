@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 20171004043950) do
   enable_extension "uuid-ossp"
   enable_extension "pgcrypto"
 
-  create_table "articles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.uuid "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
     t.bigint "resource_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171004043950) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: ""
     t.string "reset_password_token"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20171004043950) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.uuid "user_id"
-    t.uuid "role_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"

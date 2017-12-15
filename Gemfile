@@ -53,7 +53,9 @@ gem 'sucker_punch', '~> 2.0', '>= 2.0.4'
 gem 'sidekiq', '~> 5.0', '>= 5.0.5'
 
 # Searching and indexing
-gem 'searchkick', '~> 2.3', '>= 2.3.2'
+# gem 'searchkick', '~> 2.3', '>= 2.3.2'
+gem 'mysql2', '~> 0.4.10'
+gem 'thinking-sphinx', '~> 3.4', '>= 3.4.2'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.3', '>= 3.3.5'

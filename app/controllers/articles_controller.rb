@@ -5,12 +5,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     add_breadcrumb "Articles", :articles_path
-    if params[:search].present?
-      @articles = Article.where(title: params[:search][:query])
-    else
-      @articles = Article.all
-    end
     
+    @articles = Article.search params.try(:[], :search).try(:[], :query), :sql => {:include => :user}
     respond_to do |format|
       format.js { render :search}
       format.html{ render :index}
