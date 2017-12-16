@@ -43,6 +43,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'simple_form', '~> 3.5'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
+gem 'bootstrap4-kaminari-views', '~> 1.0'
 gem 'breadcrumbs_on_rails', '~> 3.0', '>= 3.0.1'
 
 gem 'flutie', '~> 2.0'  # Page title helper

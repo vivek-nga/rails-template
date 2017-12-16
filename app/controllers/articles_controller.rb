@@ -5,8 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     add_breadcrumb "Articles", :articles_path
-    
-    @articles = Article.search params.try(:[], :search).try(:[], :query), :sql => {:include => :user}
+    @articles = Article.search params.try(:[], :search).try(:[], :query), :sql => {:include => :user}, page: params[:page]
     respond_to do |format|
       format.js { render :search}
       format.html{ render :index}
@@ -22,6 +21,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    add_breadcrumb @article.id, article_path(@article)
   end
 
   # GET /articles/new
@@ -76,6 +76,7 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
+      add_breadcrumb "Articles", :articles_path
       @article = Article.find(params[:id])
     end
 

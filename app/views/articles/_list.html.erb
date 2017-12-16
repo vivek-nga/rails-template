@@ -3,7 +3,7 @@
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th>#</th>
+	    	<th>#</th>
 	      <th>Title</th>
 	      <th>Body</th>
 	      <th>User</th>
@@ -13,7 +13,7 @@
 	  <tbody>
 	    <% articles.try(:each_with_index) do |article, index| %>
 		  <tr>
-		  	<td><%= index+1 %></td>
+		  	<td><%= ((params[:page].try(:to_i)|| 0) * 20 || 0) + index + 1 %></td>
 		    <td><%= article.title %></td>
 		    <td><%= truncate(article.body, length: 100) %></td>
 		    <td><%= article.user.name %></td>
@@ -26,4 +26,4 @@
 	  </tbody>
 	</table>
 </div>
-<%= paginate articles %>
+<%= paginate articles, theme: 'twitter-bootstrap-4' %>

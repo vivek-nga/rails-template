@@ -1,11 +1,11 @@
 <%- if search_allow -%>
-	<%= simple_form_for :search,  url: url , :method => :get, remote: true do |f| %>
+	<%= simple_form_for :search,  url: url , :method => :get do |f| %>
 		<div class="row justify-content-between align-items-end">
 			<div class="col-md-2">
 				<%= f.input :sort_by, collection: options, include_hidden: false, include_blank: false, required: false %>
 			</div>
 			<div class="col-md-6">
-				<%= f.input :query, :autofocus => true, wrapper: :input_group %>
+				<%= f.input :query, :autofocus => true, wrapper: :input_group, input_html: {value: params.try(:[], :search).try(:[], :query)} %>
 			</div>
 		</div>
 	<% end %>
