@@ -6,6 +6,6 @@ ThinkingSphinx::Index.define :article, :with => :active_record do
   indexes user.last_name, :as => :user_last_name, :sortable => true
   # attributes
   has user_id,  :type => :integer
-  has created_at, :type => :timestamp
+  has created_at, :type => :timestamp, :sortable => true
   has updated_at, :type => :timestamp
 end

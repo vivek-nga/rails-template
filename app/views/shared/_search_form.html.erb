@@ -10,3 +10,13 @@
 		</div>
 	<% end %>
 <%- end -%>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#search_sort_by').on('change', function(){
+			$('.simple_form.search').submit();
+		});
+	});
+</script>

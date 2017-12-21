@@ -47,7 +47,7 @@ gem 'bootstrap4-kaminari-views', '~> 1.0'
 gem 'breadcrumbs_on_rails', '~> 3.0', '>= 3.0.1'
 
 gem 'flutie', '~> 2.0'  # Page title helper
-
+gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 # Scheduled and background jobs
 gem 'sucker_punch', '~> 2.0', '>= 2.0.4'
