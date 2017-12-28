@@ -24,6 +24,9 @@ module RailsTemplate
       g.javascripts     false
       g.jbuilder        false
   	end
+
+    # config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
+    
   end
   
 end

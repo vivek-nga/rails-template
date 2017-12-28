@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :chats
   get 'locations/index'
 
   get 'event/index'
