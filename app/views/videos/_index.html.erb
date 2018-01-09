@@ -1,0 +1,41 @@
+<div class="row">
+  <hr>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>#</th>
+	      <th>Name</th>
+	      <th>Description</th>
+	      <th>Video</th>
+	      <th>Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% article.videos.try(:each_with_index) do |video, index| %>
+		  <tr>
+		  	<td><%= index + 1 %></td>
+		    <td><%= video.name %></td>
+		    <td><%= truncate(video.description, length: 100) %></td>
+		    <td><%= video.thumbnail %></td>
+		    <td>
+		    	<%= link_to '<i class="fa fa-trash-o text-danger"></i>'.html_safe, video, method: :delete, data: { confirm: 'Are you sure?' } %>
+		    </td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
+	</div>
+</div>
+
+<div class="row">
+  <hr>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render 'videos/form', video: @video %>
+	</div>
+</div>

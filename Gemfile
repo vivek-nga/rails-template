@@ -68,6 +68,9 @@ gem 'apipie-rails', '~> 0.5.4'
 #Real time chat
 gem 'faye-rails', '~> 2.0', '>= 2.0.3'
 
+gem 'video_info', '~> 2.7'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

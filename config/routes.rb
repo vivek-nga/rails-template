@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  post 'videos/create'
+
+  delete 'videos/delete'
+
   resources :chats
   get 'locations/index'
 

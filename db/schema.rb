@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228134710) do
+ActiveRecord::Schema.define(version: 20180109044303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20171228134710) do
   create_table "chats", force: :cascade do |t|
     t.integer "chat_to"
     t.integer "chat_from"
-    t.integer "unread"
+    t.boolean "unread"
     t.text "msg"
     t.integer "msg_type"
     t.datetime "created_at", null: false
@@ -46,23 +46,6 @@ ActiveRecord::Schema.define(version: 20171228134710) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-  end
-
-  create_table "ilans", force: :cascade do |t|
-    t.float "old_price"
-    t.float "price"
-    t.date "ad_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ilanupdates", force: :cascade do |t|
-    t.string "name"
-    t.float "old_price"
-    t.bigint "ilan_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ilan_id"], name: "index_ilanupdates_on_ilan_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -115,6 +98,19 @@ ActiveRecord::Schema.define(version: 20171228134710) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "video_url"
+    t.string "thumbnail"
+    t.integer "status", default: 0
+    t.integer "provider_type", default: 0
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_videos_on_article_id"
+  end
+
   add_foreign_key "articles", "users"
-  add_foreign_key "ilanupdates", "ilans"
+  add_foreign_key "videos", "articles"
 end

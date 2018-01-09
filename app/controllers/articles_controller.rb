@@ -31,6 +31,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @video = Video.new
   end
 
   # POST /articles
@@ -77,7 +78,7 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       add_breadcrumb "Articles", :articles_path
-      @article = Article.find(params[:id])
+      @article = Article.includes(:videos).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
