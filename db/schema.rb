@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109044303) do
+ActiveRecord::Schema.define(version: 20180111151049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
   enable_extension "pgcrypto"
+
+  create_table "apartments", force: :cascade do |t|
+    t.string "upload"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -46,6 +53,23 @@ ActiveRecord::Schema.define(version: 20180109044303) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "ilans", force: :cascade do |t|
+    t.float "old_price"
+    t.float "price"
+    t.date "ad_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ilanupdates", force: :cascade do |t|
+    t.string "name"
+    t.float "old_price"
+    t.bigint "ilan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ilan_id"], name: "index_ilanupdates_on_ilan_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -112,5 +136,6 @@ ActiveRecord::Schema.define(version: 20180109044303) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "ilanupdates", "ilans"
   add_foreign_key "videos", "articles"
 end
