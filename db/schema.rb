@@ -55,23 +55,6 @@ ActiveRecord::Schema.define(version: 20180111151049) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "ilans", force: :cascade do |t|
-    t.float "old_price"
-    t.float "price"
-    t.date "ad_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ilanupdates", force: :cascade do |t|
-    t.string "name"
-    t.float "old_price"
-    t.bigint "ilan_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ilan_id"], name: "index_ilanupdates_on_ilan_id"
-  end
-
   create_table "locations", force: :cascade do |t|
     t.string "city"
     t.string "state"
@@ -136,6 +119,5 @@ ActiveRecord::Schema.define(version: 20180111151049) do
   end
 
   add_foreign_key "articles", "users"
-  add_foreign_key "ilanupdates", "ilans"
   add_foreign_key "videos", "articles"
 end

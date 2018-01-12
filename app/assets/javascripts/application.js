@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery3
-//= require jquery.fileupload.js
+//= require jquery.ui.widget
+//= require jquery.fileupload

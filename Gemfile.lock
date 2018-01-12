@@ -349,9 +349,9 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  devise (~> 4.3)
-  factory_girl (~> 4.8, >= 4.8.1)
-  factory_girl_rails (~> 4.8)
+  devise (~> 4.4)
+  factory_girl (~> 4.9)
+  factory_girl_rails (~> 4.9)
   faker (~> 1.8, >= 1.8.4)
   faye-rails (~> 2.0, >= 2.0.3)
   figaro (~> 1.1, >= 1.1.1)

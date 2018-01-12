@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #Authentication
-gem 'devise', '~> 4.3'
+gem 'devise', '~> 4.4'
 gem 'pundit', '~> 1.1'
 gem 'rolify', '~> 5.1'
 gem 'phonelib', '~> 0.6.15'
@@ -83,8 +83,8 @@ group :development, :test do
   gem 'rubocop', '~> 0.50.0', require: false
   gem 'brakeman', :require => false
   gem 'rails_best_practices', '~> 1.19'
-  gem 'factory_girl', '~> 4.8', '>= 4.8.1'
-  gem 'factory_girl_rails', '~> 4.8'
+  gem 'factory_girl', '~> 4.9'
+  gem 'factory_girl_rails', '~> 4.9'
 
   # Env variables
   gem 'figaro', '~> 1.1', '>= 1.1.1'

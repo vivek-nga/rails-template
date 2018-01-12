@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   delete 'videos/delete'
 
   resources :chats
+  resources :apartments
   get 'locations/index'
 
   get 'event/index'
