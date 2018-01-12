@@ -2,15 +2,12 @@
   <div class="row justify-content-center">
     <%= f.error_notification %>
   </div>
-  <
+  <progress value="0" max="100"></progress> 
   <div class="form-inputs">
     <input id="fileupload" type="file" name="files[]" multiple>
   </div>
   <div id="dropzone" class="fade well">Drop files here</div>
 <% end %>
-<div id="progress">
-    <div class="bar" style="width: 0%;"></div>
-</div>
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -19,23 +16,27 @@
       dropZone: $('#dropzone'),
       add: function (e, data) {
             console.log(data);
-            data.context = $('<p/>').text('Uploading...').appendTo($('#progress'));
             data.submit();
         },
-      done: function (e, data) {
+      success: function (e, data) {
           console.log("done");
           $.each(data.result.files, function (index, file) {
-              $('<p/>').text(file.name).appendTo($('#progress'));
+              console.log("done====================================");
+              console.log(file);
+              $('#status-bar').text('Uploaded!!!');
+              $('<p class="file"><p/>').text(file.name).appendTo($('#files'));
           });
       },
       progress: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('#progress .bar').html("Progress: "+progress);
+        console.log(data);
+        console.log("=============================================");
+        console.log(e);
+        $('progress').attr('value', progress);
     }
     });
   });
 </script>
-
 
 <style type="text/css">
   #dropzone {
@@ -45,22 +46,30 @@
     line-height: 50px;
     text-align: center;
     font-weight: bold;
-}
-#dropzone.in {
+  }
+  #progress{
+    width: 200px;
+    height: 20px;
+    background: gray;
+  }
+  #progress .bar {
+    background: green;
+  }
+  #dropzone.in {
     width: 600px;
     height: 200px;
     line-height: 200px;
     font-size: larger;
-}
-#dropzone.hover {
+  }
+  #dropzone.hover {
     background: lawngreen;
-}
-#dropzone.fade {
+  }
+  #dropzone.fade {
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     opacity: 1;
-}
+  }
 </style>
