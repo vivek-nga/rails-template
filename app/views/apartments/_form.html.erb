@@ -2,74 +2,68 @@
   <div class="row justify-content-center">
     <%= f.error_notification %>
   </div>
-  <progress value="0" max="100"></progress> 
   <div class="form-inputs">
-    <input id="fileupload" type="file" name="files[]" multiple>
+    <div class="form-group">
+      <input class="form-control string optional" error_class="form-control-danger" id="fileupload" type="file" name="files[]" multiple>
+    </div>
+    <div class="form-group">
+      <div id="dropzone" class="fade well">Drop files here</div>
+    </div>
   </div>
-  <div id="dropzone" class="fade well">Drop files here</div>
 <% end %>
-
+<div class="row"><hr></div>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%"></div>
+</div>
+<div class="row"><hr></div>
 <script type="text/javascript">
   $(document).ready(function(){
     $('#fileupload').fileupload({
       dataType: 'json',
       dropZone: $('#dropzone'),
+      start: function(e, data) {
+        $("#file-list-wapper").append("<%= escape_javascript(render partial: 'progress_file'%>");
+      },
       add: function (e, data) {
-            console.log(data);
-            data.submit();
-        },
+        data.submit();
+      },
       success: function (e, data) {
-          console.log("done");
-          $.each(data.result.files, function (index, file) {
-              console.log("done====================================");
-              console.log(file);
-              $('#status-bar').text('Uploaded!!!');
-              $('<p class="file"><p/>').text(file.name).appendTo($('#files'));
-          });
+        $.each(data.result.files, function (index, file) {
+            $('#status-bar').text('Uploaded!!!');
+            $('<p class="file"><p/>').text(file.name).appendTo($('#files'));
+        });
       },
       progress: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
-        console.log(data);
-        console.log("=============================================");
-        console.log(e);
-        $('progress').attr('value', progress);
+        $('.progress .progress-bar').css('width', progress+'%');
     }
     });
   });
 </script>
 
 <style type="text/css">
-  #dropzone {
-    background: palegreen;
-    width: 150px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    font-weight: bold;
-  }
-  #progress{
-    width: 200px;
-    height: 20px;
-    background: gray;
-  }
-  #progress .bar {
-    background: green;
-  }
-  #dropzone.in {
-    width: 600px;
-    height: 200px;
-    line-height: 200px;
-    font-size: larger;
-  }
-  #dropzone.hover {
-    background: lawngreen;
-  }
-  #dropzone.fade {
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-    opacity: 1;
-  }
+#dropzone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+#dropzone.in {
+  width: 600px;
+  height: 200px;
+  line-height: 200px;
+  font-size: larger;
+}
+#dropzone.hover {
+  background: lawngreen;
+}
+#dropzone.fade {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+}
 </style>

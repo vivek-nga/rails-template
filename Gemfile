@@ -83,13 +83,16 @@ group :development, :test do
   gem 'rubocop', '~> 0.50.0', require: false
   gem 'brakeman', :require => false
   gem 'rails_best_practices', '~> 1.19'
-  gem 'factory_girl', '~> 4.9'
-  gem 'factory_girl_rails', '~> 4.9'
 
   # Env variables
   gem 'figaro', '~> 1.1', '>= 1.1.1'
   gem 'faker', '~> 1.8', '>= 1.8.4'
 
+end
+group :development, :test do
+  gem "factory_bot_rails"
+  # or
+  gem "factory_bot"
 end
 
 group :development do
