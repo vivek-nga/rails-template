@@ -22,7 +22,7 @@
       dataType: 'json',
       dropZone: $('#dropzone'),
       start: function(e, data) {
-        $("#file-list-wapper").append("<%= escape_javascript(render partial: 'progress_file'%>");
+        $("#file-list-wapper").append("<%= escape_javascript(render partial: 'progress_file')%>");
       },
       add: function (e, data) {
         data.submit();

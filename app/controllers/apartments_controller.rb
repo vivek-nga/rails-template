@@ -24,9 +24,19 @@ class ApartmentsController < ApplicationController
   # POST /apartments
   # POST /apartments.json
   def create
-    
-    @apartment = Apartment.new(apartment_params)
+    files = params[:files]
+    file_name = files.try(:original_filename).try(:gsub, '','-')
+    @apartment = Apartment.find_or_initialize_by(name: file_name)
 
+    directory = Rails.root.join("public", "uploads") 
+    begin  
+      Dir.mkdir(directory) unless Dir.exists?(directory)
+    rescue Exception => e
+      puts e.backtrace
+    end
+    path = File.join(directory, file_name)
+    File.open(path, "wb") { |f| f.write(files.read)}
+    @apartment.upload = path
     respond_to do |format|
       if @apartment.save
         format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
