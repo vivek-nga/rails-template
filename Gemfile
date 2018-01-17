@@ -5,32 +5,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
-# Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 #Authentication
 gem 'devise', '~> 4.4'
@@ -45,25 +27,22 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'bootstrap4-kaminari-views', '~> 1.0'
 gem 'breadcrumbs_on_rails', '~> 3.0', '>= 3.0.1'
-
 gem 'flutie', '~> 2.0'  # Page title helper
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
-# Scheduled and background jobs
+#Scheduled and background jobs
 gem 'sucker_punch', '~> 2.0', '>= 2.0.4'
 gem 'sidekiq', '~> 5.0', '>= 5.0.5'
 
-# Searching and indexing
-# gem 'searchkick', '~> 2.3', '>= 2.3.2'
+#Searching and indexing
 gem 'mysql2', '~> 0.4.10'
 gem 'thinking-sphinx', '~> 3.4', '>= 3.4.2'
 
-# Use Redis adapter to run Action Cable in production
+#Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.3', '>= 3.3.5'
 
 #Api documentation
 gem 'apipie-rails', '~> 0.5.4'
-
 
 #Real time chat
 gem 'faye-rails', '~> 2.0', '>= 2.0.3'
@@ -71,8 +50,7 @@ gem 'faye-rails', '~> 2.0', '>= 2.0.3'
 gem 'video_info', '~> 2.7'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
-
-# Employee
+#Employee
 gem 'pg_search', '~> 2.1', '>= 2.1.2'
 gem 'ransack', '~> 1.8', '>= 1.8.4'
 gem 'polyamorous', '~> 1.3', '>= 1.3.2'
@@ -80,37 +58,31 @@ gem 'active_hash', '~> 1.5', '>= 1.5.3'
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6', '>= 3.6.1'
+  gem "factory_bot_rails"
+  gem "factory_bot"
 
-  # Security code analysis
+  #Security code analysis
   gem 'rubocop', '~> 0.50.0', require: false
   gem 'brakeman', :require => false
   gem 'rails_best_practices', '~> 1.19'
 
-  # Env variables
+  #Env variables
   gem 'figaro', '~> 1.1', '>= 1.1.1'
   gem 'faker', '~> 1.8', '>= 1.8.4'
 
 end
-group :development, :test do
-  gem "factory_bot_rails"
-  # or
-  gem "factory_bot"
-end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "pry"
+  gem "pry-rails"
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
