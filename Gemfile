@@ -71,6 +71,14 @@ gem 'faye-rails', '~> 2.0', '>= 2.0.3'
 gem 'video_info', '~> 2.7'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
+
+# Employee
+gem 'pg_search', '~> 2.1', '>= 2.1.2'
+gem 'ransack', '~> 1.8', '>= 1.8.4'
+gem 'polyamorous', '~> 1.3', '>= 1.3.2'
+gem 'active_hash', '~> 1.5', '>= 1.5.3'
+gem 'decent_exposure', '~> 3.0', '>= 3.0.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
