@@ -47,6 +47,7 @@ GEM
       rails (>= 4.1)
     arel (8.0.0)
     ast (2.3.0)
+    awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap4-kaminari-views (1.0.0)
@@ -367,6 +368,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash (~> 1.5, >= 1.5.3)
   apipie-rails (~> 0.5.4)
+  awesome_print (~> 1.8)
   bootstrap4-kaminari-views (~> 1.0)
   brakeman
   breadcrumbs_on_rails (~> 3.0, >= 3.0.1)

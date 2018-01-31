@@ -4,7 +4,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>File</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -12,7 +11,6 @@
       <% @apartments.each do |apartment| %>
         <tr>
           <td><%= apartment.name %></td>
-          <td><%= apartment.upload %></td>
           <td><%= link_to 'Show', apartment %></td>
           <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
           <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

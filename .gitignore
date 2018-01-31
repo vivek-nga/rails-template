@@ -20,5 +20,5 @@
 
 db/sphinx/*
 /config/application.yml
-
+/public/upload/*
 step-guide.txt

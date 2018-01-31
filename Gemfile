@@ -73,6 +73,7 @@ group :development, :test do
   #Env variables
   gem 'figaro', '~> 1.1', '>= 1.1.1'
   gem 'faker', '~> 1.8', '>= 1.8.4'
+  gem 'awesome_print', '~> 1.8'
 
 end
 

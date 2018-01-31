@@ -1,4 +1,4 @@
-<%= simple_form_for(@apartment) do |f| %>
+<%= simple_form_for(@apartment, html:{enctype: 'multipart/form-data'}) do |f| %>
   <div class="row justify-content-center">
     <%= f.error_notification %>
   </div>
@@ -6,12 +6,12 @@
     <div class="form-group">
       <input class="form-control string optional" error_class="form-control-danger" id="fileupload" type="file" name="files[]" multiple>
     </div>
-    <div class="form-group">
-      <div id="dropzone" class="fade well">Drop files here</div>
-    </div>
   </div>
 <% end %>
-<div class="row"><hr></div>
+<div class="uploaded-files">
+  <ul>
+  </ul>
+</div>
 <div class="progress">
   <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%"></div>
 </div>
@@ -20,23 +20,42 @@
   $(document).ready(function(){
     $('#fileupload').fileupload({
       dataType: 'json',
-      dropZone: $('#dropzone'),
+      maxChunkSize: 500000,
       start: function(e, data) {
         $("#file-list-wapper").append("<%= escape_javascript(render partial: 'progress_file')%>");
       },
       add: function (e, data) {
         data.submit();
       },
-      success: function (e, data) {
-        $.each(data.result.files, function (index, file) {
-            $('#status-bar').text('Uploaded!!!');
-            $('<p class="file"><p/>').text(file.name).appendTo($('#files'));
-        });
+      done: function (e, data) {
+        console.log(data);
+        $('.uploaded-files ul').append('<li class="file">'+data.result.name+'</li>');
       },
-      progress: function (e, data) {
+      fail: function (e, data) {
+        console.log("fail");
+      },
+      progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('.progress .progress-bar').css('width', progress+'%');
-    }
+        $('.progress .progress-bar').text(progress+'%');
+    },
+    progressServerRate: 0.3,
+    progressServerDecayExp: 2
+    })
+    .on('fileuploadchunksend', function (e, data) { 
+      console.log(data);
+      console.log('fileuploadchunksend')})
+    .on('fileuploadchunkdone', function (e, data) {
+      console.log(data);
+      console.log('fileuploadchunkdone');
+    })
+    .on('fileuploadchunkfail', function (e, data) {
+      console.log(data);
+      console.log('fileuploadchunkfail');
+    })
+    .on('fileuploadchunkalways', function (e, data) {
+      console.log(data);
+      console.log('fileuploadchunkalways');
     });
   });
 </script>

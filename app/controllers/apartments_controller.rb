@@ -25,7 +25,11 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     files = params[:files]
-    file_name = files.try(:original_filename).try(:gsub, '','-')
+    p "=================================================================="
+    ap params[:files]
+    p "=================================================================="
+    file_name = files[0].try(:original_filename).try(:gsub, ' ','-')
+    # file_name = "#{Time.now.to_s.gsub(' ', '-')}#{file_name}"
     @apartment = Apartment.find_or_initialize_by(name: file_name)
 
     directory = Rails.root.join("public", "uploads") 
@@ -35,12 +39,20 @@ class ApartmentsController < ApplicationController
       puts e.backtrace
     end
     path = File.join(directory, file_name)
-    File.open(path, "wb") { |f| f.write(files.read)}
+    p "=================================================================="
+    p request.headers['Content-Range']
+    p request.headers['Content-Length']
+    p "=================================================================="
+    content_range = request.headers['Content-Range']
+    start_value = content_range.split('-').first if content_range
+    #range_value = content_range.split('-').last.split('/').map(&:to_i) if content_range
+    File.delete(path) if (start_value.present? && start_value == "bytes 0") && (File.exist? path) 
+    File.open(path, "ab") { |f| f.write(files.first.read)}
     @apartment.upload = path
     respond_to do |format|
       if @apartment.save
         format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
-        format.json { render json: "ok" }
+        format.json { render json: @apartment }
       else
         format.html { render :new }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
