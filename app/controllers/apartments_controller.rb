@@ -4,6 +4,11 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
+    WebNotificationsChannel.broadcast_to(
+      current_user,
+      title: 'New things!',
+      body: 'All the news fit to print'
+    )
     @apartments = Apartment.all
   end
 
