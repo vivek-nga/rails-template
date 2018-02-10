@@ -57,6 +57,7 @@ gem 'polyamorous', '~> 1.3', '>= 1.3.2'
 gem 'active_hash', '~> 1.5', '>= 1.5.3'
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
