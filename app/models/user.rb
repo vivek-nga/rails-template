@@ -12,9 +12,10 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   #validates_with MyEmailValidator
 
-  has_many :chats_from, class_name: 'Chat', foreign_key: 'chat_from'
-  has_many :chats_to, class_name: 'Chat', foreign_key: 'chat_to'
-
+  has_many :chats
+  has_many :conversations_from, class_name: :Conversation, foreign_key: :chat_from, inverse_of: :from_user
+  has_many :conversations_to, class_name: :Conversation, foreign_key: :chat_to, inverse_of: :to_user
+  
   def assign_default_role
     self.username = self.name if self.name.present?
     self.add_role(:user) if self.roles.blank?
