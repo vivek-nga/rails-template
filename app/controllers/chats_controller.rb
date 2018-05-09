@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
   # GET /chats
   # GET /chats.json
   def index
-    @chats = Chat.list(current_user)
+    @users = User.where.not(id: current_user.id)
   end
 
   # GET /chats/1

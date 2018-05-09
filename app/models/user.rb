@@ -28,4 +28,10 @@ class User < ApplicationRecord
   def name
     "#{self.first_name} #{self.last_name}".try(:strip)
   end
+
+
+  def conversation_exists? with_user
+    self.conversations_from.where(chat_to: with_user.id).count > 0 &&
+    self.conversations_to.where(chat_from: with_user.id).count > 0
+  end
 end
