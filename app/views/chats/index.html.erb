@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-4">
     <div class="list-group" id="myList" role="tablist" >
-      <% @users.each do |user| %>
+      <% @chats.each do |chat| %>
         <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="list" href="<%= chat_path(chat) %>" role="tab" >
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= user.name %></h5>
+            <h5 class="mb-1"><%= chat.user_to.name %></h5>
             <small><%= distance_of_time_in_words(chat.created_at, Time.now) %></small>
           </div>
           <p class="mb-1"><%= chat.msg %></p>

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete 'videos/delete'
 
   resources :chats
-  resources :conversations
   resources :apartments
   get 'locations/index'
 
