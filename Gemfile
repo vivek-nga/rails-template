@@ -48,7 +48,7 @@ gem 'apipie-rails', '~> 0.5.4'
 gem 'faye-rails', '~> 2.0', '>= 2.0.3'
 
 gem 'video_info', '~> 2.7'
-gem 'rack-cors', '~> 1.0', '>= 1.0.2'
+gem 'rack-cors', '~> 1.0'
 
 #Employee
 gem 'pg_search', '~> 2.1', '>= 2.1.2'
