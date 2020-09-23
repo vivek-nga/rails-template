@@ -44,9 +44,6 @@ gem 'redis', '~> 3.3', '>= 3.3.5'
 #Api documentation
 gem 'apipie-rails', '~> 0.5.4'
 
-#Real time chat
-gem 'faye-rails', '~> 2.0', '>= 2.0.3'
-
 gem 'video_info', '~> 2.7'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
