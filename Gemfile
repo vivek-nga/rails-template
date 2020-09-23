@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 6.0', '>= 6.0.3.3'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
@@ -52,7 +52,7 @@ gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
 #Employee
 gem 'pg_search', '~> 2.1', '>= 2.1.2'
-gem 'ransack', '~> 1.8', '>= 1.8.4'
+gem 'ransack'
 gem 'polyamorous', '~> 1.3', '>= 1.3.2'
 gem 'active_hash', '~> 1.5', '>= 1.5.3'
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2'

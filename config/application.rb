@@ -12,29 +12,8 @@ module RailsTemplate
     config.load_defaults 5.1
 
     # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-    config.autoload_paths << Rails.root.join('app').join('inputs')
-    config.eager_load_paths << Rails.root.join('lib')
-    config.generators do |g|
-  		# g.orm :active_record, primary_key_type: :uuid
-      g.template_engine :erb
-      g.test_framework  :test_unit, fixture: false
-      g.stylesheets     false
-      g.javascripts     false
-      g.jbuilder        false
-  	end
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*',
-        headers: :any,
-        methods: [:get, :post, :put, :patch, :delete, :options, :head]
-      end
-    end
-
-    # config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
-    
+    # Application configuration can go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded after loading
+    # the framework and any gems in your application.
   end
-  
 end
