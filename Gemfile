@@ -1,12 +1,7 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
-gem 'rails', '~> 6.0', '>= 6.0.3.3'
-gem 'pg', '~> 0.18'
+gem 'rails', '~> 6.1'
+gem 'pg'
 gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -36,7 +31,7 @@ gem 'sidekiq', '~> 5.0', '>= 5.0.5'
 
 #Searching and indexing
 gem 'mysql2', '~> 0.4.10'
-gem 'thinking-sphinx', '~> 3.4', '>= 3.4.2'
+gem 'searchkick'
 
 #Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.3', '>= 3.3.5'
@@ -48,11 +43,10 @@ gem 'video_info', '~> 2.7'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
 #Employee
-gem 'pg_search', '~> 2.1', '>= 2.1.2'
+gem 'pg_search'
 gem 'ransack'
-gem 'polyamorous', '~> 1.3', '>= 1.3.2'
-gem 'active_hash', '~> 1.5', '>= 1.5.3'
-gem 'decent_exposure', '~> 3.0', '>= 3.0.2'
+gem 'active_hash'
+gem 'decent_exposure'
 
 
 group :development, :test do
